@@ -42,12 +42,9 @@ def post_detail(request, year, month, day, post):
             new_comment.post = post
             # Сохраняем комментарий в базе данных.
             new_comment.save()
-        else:
-            comment_form = CommentForm()
-    return render(request,'blog/post/detail.html',{'post': post,
-                                                    'comments': comments,
-                                                    'new_comment': new_comment,
-                                                    'comment_form': comment_form})
+    else:
+        comment_form = CommentForm()
+    return render(request,'blog/post/detail.html',{'post': post, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
 
 class PostListView(ListView):
